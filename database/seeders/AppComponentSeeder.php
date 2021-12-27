@@ -20,6 +20,7 @@ class AppComponentSeeder extends Seeder
         $rows = [
             ['id' => 1, 'component' => 'User Management'],
             ['id' => 2, 'component' => 'Authentication Management'],
+            ['id' => 3, 'component' => 'Animal Management'],
 
         ];
 

@@ -33,13 +33,33 @@
                             </li>
                             <li class="header">Another Menu</li>
                             <li>
-                                <a href="#">
-                                    <i class="fa fa-users" aria-hidden="true"></i> Friends
+                                <a href="{{route('category.index')}}">
+                                    <i class="fa fa-list-alt" aria-hidden="true"></i> Category
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fa fa-cog" aria-hidden="true"></i> Settings
+                                <a href="{{route('animal.index')}}">
+                                    <i class="fa fa-cog" aria-hidden="true"></i> animal
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('organization.index')}}">
+                                    <i class="fa fa-cog" aria-hidden="true"></i> organization
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('adoption.index')}}">
+                                    <i class="fa fa-cog" aria-hidden="true"></i> adoption
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.index')}}">
+                                    <i class="fa fa-cog" aria-hidden="true"></i> admin
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('blog.index')}}">
+                                    <i class="fa fa-cog" aria-hidden="true"></i> blog
                                 </a>
                             </li>
                             <li>

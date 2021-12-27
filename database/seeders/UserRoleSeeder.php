@@ -20,6 +20,9 @@ class UserRoleSeeder extends Seeder
         $rows = [
             ['id' => 1, 'user_role' => 'Super Admin'],
             ['id' => 2, 'user_role' => 'Organization'],
+            ['id' => 3, 'user_role' => 'Clinet'],
+            
+            
             
         ];
         foreach($rows as $row)
