@@ -23,6 +23,10 @@ class CreateAdoptionsTable extends Migration
             $table->foreign('organization_id')
                   ->references('id')
                   ->on('organizations')->onDelete('cascade');
+            $table->bigInteger('client_id')->unsigned();
+            $table->foreign('client_id')
+                  ->references('id')
+                  ->on('clients')->onDelete('cascade');
             $table->date('date');
             $table->text('description');
             $table->boolean('status' )->default(0);

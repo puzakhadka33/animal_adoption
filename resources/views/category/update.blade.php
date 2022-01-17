@@ -4,7 +4,7 @@
 <div class="container">
     <h5>edit category</h5>
 <hr>
-    <form method="POST" action="{{route('category.update',['category'=>$category->id])}}" >
+    <form method="POST" action="{{ route('category.update', ['Categories' => $categories ->id])}}" >
         @csrf
         @method('put')
         <div class="form-group">

@@ -6,6 +6,8 @@ use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
@@ -16,7 +18,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        if (!Gate::allows('admin-access')) {
+            return abort(401);
+        }
+
         $admin_data = Admin::all();
         return view('admin.admin.index',compact('admin_data'));
     }
@@ -28,7 +33,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+         if (!Gate::allows('admin-add')) {
+            return abort(401);
+        }
         $admin = Admin::all();
         return view('admin.admin.create');
     }
@@ -41,21 +48,31 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!Gate::allows('admin-add')) {
+            return abort(401);
+        }
+        $input = $request->all();
+        if($image = $request->file('image')){
+            $destination = 'images/';
+            $adminimg = date('mdYHis').'.'.$image->getClientOriginalExtension();
+            $image->move($destination, $adminimg);
+            $input['image'] = $adminimg;
+        }
         $user  = User::create([
-            'name'=> $request->name,
-            'email'=>$request->email,
-            'contact'=>$request->contact,
-            'email_verified_at'=>$request->date,
-            'address'=>$request->address,
-            'password'=>$request->password,
-            'user_role_id' =>$request->user_role_id
+            'name'=> $input['name'],
+            'email'=>$input['email'],
+            'contact'=>$input['contact'],
+            'email_verified_at'=>$input['email_verified_at'],
+            'address'=>$input['address'],
+            'password'=>Hash::make($input['password']),
+            'user_role_id' =>1
         ]);
         
         $admin = Admin::create([
             'user_id' => $user->id,
-            'alt_email' => $request->alt_email,
-            'status' => $request->status
+            'alt_email' => $input['alt_email'],
+            'status' => $input['status'],
+            'image' => $input['image'],
         ]);
         return redirect()->route('admin.index');
 
@@ -82,7 +99,9 @@ class AdminController extends Controller
      */
     public function edit(admin $admin)
     {
-        //
+        if (!Gate::allows('admin-edit')) {
+            return abort(401);
+        }
         return view('admin.update',compact('admin'));
     }
 
@@ -95,7 +114,9 @@ class AdminController extends Controller
      */
     public function update(Request $request, admin $admin)
     {
-        //
+        if (!Gate::allows('admin-edit')) {
+            return abort(401);
+        }
         $admin->update($request->all());
         return redirect()->route('admin.index'); 
     }
@@ -108,7 +129,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (!Gate::allows('admin-delete')) {
+            return abort(401);
+        }
         Admin::find($id)->delete();
         return redirect()->route('admin.index');
     }

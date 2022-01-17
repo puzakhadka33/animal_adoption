@@ -20,7 +20,6 @@ class UserSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         User::truncate();
-        Organization::truncate();
         Admin::truncate();
         $rows = [
             [

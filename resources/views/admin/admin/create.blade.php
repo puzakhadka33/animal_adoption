@@ -4,7 +4,7 @@
 <div class="container">
     <h5>Create admin</h5>
 <hr>
-    <form method="POST" action="{{route('admin.store')}}">
+    <form method="POST" action="{{route('admin.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <br>
@@ -28,6 +28,11 @@
         </div>
         <div class="form-group">
           <br>
+          <label for="name">email verified at</label>
+          <input name="email_verified_at" type="date" class="form-control" id="animal"aria-describedby="admmin "placeholder="Enter your address ">
+        </div>
+        <div class="form-group">
+          <br>
           <label for="name">password</label>
           <input name="password" type="password" class="form-control" id="animal"aria-describedby="admin "placeholder="Enter your password ">
         </div>
@@ -35,6 +40,11 @@
           <br>
           <label for="name">alt_email</label>
           <input name="alt_email" type="email" class="form-control" id="animal" aria-describedby="admin" placeholder="Add email">
+        </div>
+        <div class="form-group">
+          <br>
+          <label for="name">Image</label>
+          <input name="image" type="file" class="form-control" id="animal" aria-describedby="admin" placeholder="Add email">
         </div>
         <div>
           <input  type="text" name ="status" value="" id="flexCheckDefault">

@@ -13,7 +13,6 @@
             <th scope="col">contact </th>
             <th scope="col">email_verifired_at</th>
             <th scope="col">address </th>
-            <th scope="col">password </th>
             <th scope="col">alt_email </th>
             <th scope="col">image </th>
             <th scope="col">status </th>
@@ -29,10 +28,9 @@
             <td>{{$organization->user->email}}</td>
             <td>{{$organization->user->contact}}</td>
             <td>{{$organization->user->email_verified_at}}</td>
-            <td>{{$organization->user->address}}</td>
-            <td>{{$organization->user->password}}</td>
+            <td>{{$organization->user->address}}</td>           
             <td>{{$organization->alt_email}}</td>
-            <td><img src="{{url('images')}}/{{$organization->image}}" alt="" width="200"></td>
+            <td><img src="{{url('images')}}/{{$organization->image}}" alt="" width="100"></td>
             <td>
                 @if ($organization->status ==1)
                   Active

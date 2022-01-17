@@ -15,23 +15,15 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users')->onDelete('cascade');
             $table->timestamps();
         });
-        Schema::create('client_adoptions', function (Blueprint $table) {
-            $table->bigInteger('client_id')->unsigned();
-            $table->foreign('client_id')
-                  ->references('id')
-                  ->on('clients')->onDelete('cascade');
-            $table->bigInteger('adoption_id')->unsigned();
-            $table->foreign('adoption_id')
-                  ->references('id')
-                  ->on('adoptions')->onDelete('cascade');
-            $table->timestamps();
-        });
+        
+       
     }
 
     /**

@@ -21,7 +21,7 @@
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$blog->title}}</td>
             <td>{{$blog->description}}</td>
-            <td>{{$blog->image}}</td>
+            <td><img src="{{url('images')}}/{{$blog->image}}" alt="" width="100"></td>
 
             <td>
                 @can('blog-edit')

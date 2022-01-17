@@ -4,8 +4,9 @@
 <div class="container">
     <h5>Create blog</h5>
 <hr>
-    <form method="POST" action="{{route('blog.store')}}">
+    <form method="POST" action="{{route('blog.store')}}" enctype="multipart/form-data">
         @csrf
+       
         <div class="form-group">
           <br>
           <label for="name"> Blog title</label>

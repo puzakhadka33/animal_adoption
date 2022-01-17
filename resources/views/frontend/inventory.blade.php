@@ -14,6 +14,7 @@
                 <th scope="col">weight</th>
                 <th scope="col">length</th>
                 <th scope="col">breed</th>
+                <th scope="col">adopt</th>
                 
               </tr>
               
@@ -28,6 +29,9 @@
                   <td>{{$item->weight}}</td>
                   <td>{{$item->length}}</td>
                   <td>{{$item->breed}}</td>
+                  <td>  <a href="{{route('adopt', ['animal' => $item->id])}}" class="btn btn-info btn-sm">
+                    Adopt
+                </a></td>
 
                   
                   

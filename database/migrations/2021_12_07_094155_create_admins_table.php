@@ -15,6 +15,7 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
                   ->references('id')

@@ -15,7 +15,14 @@ class organization extends Model
         return $this->belongsTo(User::class,'user_id');
     }
     public function animals(){
-        // dd($this->belongsTo(User::class, 'user_id'));
-        return $this->hasMany(animal::class,'user_id');
+        return $this->hasMany(animal::class);
+    }
+
+    public function message(){
+        return $this->hasMany(message::class);
+    }
+
+    public function adoption(){
+        return $this->hasMany(adoption::class);
     }
 }

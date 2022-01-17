@@ -8,7 +8,7 @@
   <!--Box Body-->
   <div class="box-body">
       <!--Form Starts-->
-      <form action="{{route('blog.update', ['blog' => $blog->id])}}" method="post">
+      <form action="{{route('blog.update', ['blog' => $blog->id])}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('put')
          

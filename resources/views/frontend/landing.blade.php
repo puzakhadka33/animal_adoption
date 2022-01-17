@@ -942,7 +942,7 @@ display: -webkit-box;
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="images/front.jpg" class="d-block w-100" alt="...">
+            <img src="images/carousel1.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
             <img src="images/goat.jfif" class="d-block w-100" alt="...">
@@ -975,7 +975,7 @@ display: -webkit-box;
         <p>{{$item->user->address}}</p>
         <p class="org-content">{{$item->status}}</p>
       </div>
-      <button class = "organization-btn" > <a href="orgprofile">View Organization</a></button>
+      <button class = "organization-btn" > <a href="{{route('orgprofile.show',['id'=>$item->id])}}">View Organization</a></button>
     </div>
     @endforeach
 </div>
@@ -1005,7 +1005,7 @@ display: -webkit-box;
                         
                                 <h6 class="category text-info">{{$item->title}}</h6>
                                 <div class="card-cpt"><p>{{$item->description}}</p>
-                                <a href="/blogdetail">See More</a>
+                                <a href="{{route('blogview.viewDetails',['id'=>$item->id])}}">See More</a>
                                 </div>
                             </div>
                             @endforeach

@@ -78,7 +78,7 @@ class ClientController extends Controller
      */
     public function edit(client $client)
     {
-        //
+        return view('client.update',compact('client'));
     }
 
     /**

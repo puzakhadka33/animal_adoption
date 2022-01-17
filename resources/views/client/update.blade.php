@@ -4,12 +4,12 @@
 <div class="container">
     <h5>edit category</h5>
 <hr>
-    <form method="POST" action="{{route('category.store')}}">
+    <form method="POST" action="{{route('client.update')}}">
         @csrf
         <div class="form-group">
           <br>
           <br>
-          <input name="category" type="text" class="form-control" id="category" aria-describedby="category" placeholder="Add category">
+          <input type="file">
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>

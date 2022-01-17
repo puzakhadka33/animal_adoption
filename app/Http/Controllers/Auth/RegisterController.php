@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'contact' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
+            
         
         ]);
     }
@@ -68,6 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -79,7 +81,8 @@ class RegisterController extends Controller
         ]);
         // dd($data);
         $client =  Client::create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            
         ]);
             
         return $user;

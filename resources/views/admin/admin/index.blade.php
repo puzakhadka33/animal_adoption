@@ -11,9 +11,7 @@
             <th scope="col">name </th>
             <th scope="col">email </th>
             <th scope="col">contact </th>
-            <th scope="col">email_verifired_at</th>
             <th scope="col">address </th>
-            <th scope="col">password </th>
             <th scope="col">alt_email </th>
             <th scope="col">status </th>
             <th scope="col">Action</th>
@@ -27,9 +25,7 @@
             <td>{{$admin->user->name}}</td>
             <td>{{$admin->user->email}}</td>
             <td>{{$admin->user->contact}}</td>
-            <td>{{$admin->user->email_verified_at}}</td>
             <td>{{$admin->user->address}}</td>
-            <td>{{$admin->user->password}}</td>
             <td>{{$admin->alt_email}}</td>
             <td>
                 @if ($admin->status ==1)

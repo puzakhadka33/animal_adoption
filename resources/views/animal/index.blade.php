@@ -15,6 +15,7 @@
             <th scope="col">weight</th>
             <th scope="col">length</th>
             <th scope="col">breed</th>
+            <th scope="col">Description</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -30,6 +31,9 @@
             <td>{{$animal->weight}}</td>
             <td>{{$animal->length}}</td>
             <td>{{$animal->breed}}</td>
+            <td>{{$animal->description}}</td>
+            
+          
 
             <td>
               <a href="{{route('adopt', ['animal' => $animal->id])}}" class="btn btn-info btn-sm">

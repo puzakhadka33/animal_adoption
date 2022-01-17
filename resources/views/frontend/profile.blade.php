@@ -1,126 +1,187 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 @section('content')
 <style>
-    body {
-    background-color: #000000
+   body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
-
-.padding {
-    padding: 3rem !important;
-    margin-left: 200px
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
 }
-
-.card-img-top {
-    height: 300px
+.profile-img{
+    text-align: center;
 }
-
-.card-no-border .card {
-    border-color: #d7dfe3;
-    border-radius: 4px;
-    margin-bottom: 30px;
-    -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+.profile-img img{
+    width: 70%;
+    height: 100%;
 }
-
-.card-body {
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.25rem
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
 }
-
-.pro-img {
-    margin-top: -80px;
-    margin-bottom: 20px
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
 }
-
-.little-profile .pro-img img {
-    width: 128px;
-    height: 128px;
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 100%
+.profile-head h5{
+    color: #333;
 }
-
-html body .m-b-0 {
-    margin-bottom: 0px
+.profile-head h6{
+    color: #0062cc;
 }
-
-h3 {
-    line-height: 30px;
-    font-size: 21px
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
 }
-
-.btn-rounded.btn-md {
-    padding: 12px 35px;
-    font-size: 16px
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
 }
-
-html body .m-t-10 {
-    margin-top: 10px
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
 }
-
-.btn-primary,
-.btn-primary.disabled {
-    background: #7460ee;
-    border: 1px solid #7460ee;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
-    box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
-    -webkit-transition: 0.2s ease-in;
-    -o-transition: 0.2s ease-in;
-    transition: 0.2s ease-in
+.profile-head .nav-tabs{
+    margin-bottom:5%;
 }
-
-.btn-rounded {
-    border-radius: 60px;
-    padding: 7px 18px
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
 }
-
-.m-t-20 {
-    margin-top: 20px
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
 }
-
-.text-center {
-    text-align: center !important
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #455a64;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
 }
-
-p {
-    margin-top: 0;
-    margin-bottom: 1rem
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
 }
 </style>
-<div class="padding">
-    <div class="col-md-8">
-        <!-- Column -->
-        <div class="card"> <img class="card-img-top" src="images/hero.jfif" alt="Card image cap">
-            <div class="card-body little-profile text-center">
-                <div class="pro-img"><img src="images/spider.jpg" alt="user"></div>
-                <h3 class="m-b-0">Tobey Maguire</h3>
-                <p>Hero &amp; Spiderman</p> <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded" data-abc="true">Follow</a>
-                <div class="row text-center m-t-20">
-                    <div class="col-lg-4 col-md-4 m-t-20">
-                        <h3 class="m-b-0 font-light">10434</h3><small>Articles</small>
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{url('images')}}/{{$profile->image}}" />
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h5>
+                                {{$profile->user->name}}
+                            </h5>
+                            <h6>
+                                Address : {{$profile->user->address}}
+                            </h6>
+                            <p class="proile-rating">Contact : <span>{{$profile->user->contact}}</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {{-- <div class="col-md-2">
+                
+                <button class="btn btn-primary" > <a href="" style="text-decoration: none; color:white;"> Edit Profile</a></button>
+            </div> --}}
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>User Id</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$profile->user->id}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$profile->user->name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$profile->user->email}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$profile->user->contact}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Member Since</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{$profile->created_at}}</p>
+                                    </div>
+                                </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 m-t-20">
-                        <h3 class="m-b-0 font-light">434K</h3><small>Followers</small>
-                    </div>
-                    <div class="col-lg-4 col-md-4 m-t-20">
-                        <h3 class="m-b-0 font-light">5454</h3><small>Following</small>
-                    </div>
+                    
                 </div>
             </div>
         </div>
-    </div>
+    </form>           
 </div>
     
 @endsection

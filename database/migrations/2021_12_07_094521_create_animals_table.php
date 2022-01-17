@@ -30,6 +30,7 @@ class CreateAnimalsTable extends Migration
             $table->string('length', 255);
             $table->string('breed', 255);
             $table->string('image', 255);
+            $table->text('description');
             $table->timestamps();
         });
     }

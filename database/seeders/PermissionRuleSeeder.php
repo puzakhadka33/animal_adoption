@@ -44,15 +44,35 @@ class PermissionRuleSeeder extends Seeder
             ['rule' => 'category-edit', 'app_component_id' => 5 ],
             ['rule' => 'category-delete', 'app_component_id' => 5 ],
 
-            ['rule' => 'blog-access', 'app_component_id' => 5],
-            ['rule' => 'blog-add', 'app_component_id' => 5 ],
-            ['rule' => 'blog-edit', 'app_component_id' => 5 ],
-            ['rule' => 'blog-delete', 'app_component_id' => 5 ],
+            ['rule' => 'blog-access', 'app_component_id' => 6],
+            ['rule' => 'blog-add', 'app_component_id' => 6 ],
+            ['rule' => 'blog-edit', 'app_component_id' => 6 ],
+            ['rule' => 'blog-delete', 'app_component_id' => 6 ],
 
-            ['rule' => 'organization-access', 'app_component_id' => 6],
-            ['rule' => 'organization-add', 'app_component_id' => 6 ],
-            ['rule' => 'organization-edit', 'app_component_id' => 6 ],
-            ['rule' => 'organization-delete', 'app_component_id' => 6 ],
+            ['rule' => 'organization-access', 'app_component_id' => 7],
+            ['rule' => 'organization-add', 'app_component_id' => 7 ],
+            ['rule' => 'organization-edit', 'app_component_id' => 7 ],
+            ['rule' => 'organization-delete', 'app_component_id' => 7 ],
+
+            ['rule' => 'admin-access', 'app_component_id' => 8],
+            ['rule' => 'admin-add', 'app_component_id' => 8 ],
+            ['rule' => 'admin-edit', 'app_component_id' => 8 ],
+            ['rule' => 'admin-delete', 'app_component_id' => 8 ],
+
+            ['rule' => 'org-inbox-access', 'app_component_id' => 9],
+            ['rule' => 'org-inbox-add', 'app_component_id' => 9 ],
+            ['rule' => 'org-inbox-edit', 'app_component_id' => 9 ],
+            ['rule' => 'org-inbox-delete', 'app_component_id' => 9 ],
+
+            ['rule' => 'admin-inbox-access', 'app_component_id' => 10],
+            ['rule' => 'admin-inbox-add', 'app_component_id' => 10 ],
+            ['rule' => 'admin-inbox-edit', 'app_component_id' => 10 ],
+            ['rule' => 'admin-inbox-delete', 'app_component_id' => 10 ],
+
+            ['rule' => 'admin-dash-access', 'app_component_id' => 11],
+            ['rule' => 'admin-dash-add', 'app_component_id' => 11 ],
+            ['rule' => 'admin-dash-edit', 'app_component_id' => 11 ],
+            ['rule' => 'admin-dash-delete', 'app_component_id' => 11 ],
         ];
 
         foreach ($items as $item) {

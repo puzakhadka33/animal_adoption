@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use DB;
 
 
 class OrganizationController extends Controller
@@ -16,6 +19,9 @@ class OrganizationController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('organization-access')) {
+            return abort(401);
+        }
         //
         $organization_data = Organization::all();
         return view('organization.index',compact('organization_data'));
@@ -28,7 +34,9 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        
+        if (!Gate::allows('organization-add')) {
+            return abort(401);
+        }
         $organization = Organization::all();
         return view('organization.create',compact('organization'));
     }
@@ -41,6 +49,9 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Gate::allows('organization-add')) {
+            return abort(401);
+        }
         //
         $input = $request->all();
 
@@ -57,8 +68,8 @@ class OrganizationController extends Controller
             'contact'=>$input['contact'],
             // 'email_verified_at'=>$input['date'],
             'address'=>$input['address'],
-            'password'=>$input['password'],
-            'user_role_id' =>$input['user_role_id']
+            'password'=>Hash::make($input['password']),
+            'user_role_id' =>2
         ]);
         
         $organization = organization::create([
@@ -93,6 +104,9 @@ class OrganizationController extends Controller
      */
     public function edit(organization $organization)
     {
+        if (!Gate::allows('organization-edit')) {
+            return abort(401);
+        }
         //
         return view('organization.update',compact('organization'));
     }
@@ -106,6 +120,9 @@ class OrganizationController extends Controller
      */
     public function update(Request $request, organization $organization)
     {
+        if (!Gate::allows('organization-edit')) {
+            return abort(401);
+        }
         $input = $request->all();
         $user= $request->all();
         $user = $organization->user;
@@ -120,8 +137,7 @@ class OrganizationController extends Controller
             'email'=>$input['email'],
             'contact'=>$input['contact'],
             'email_verified_at'=>$input['email_verified_at'],
-            'address'=> $input['address'],
-            
+            'address'=> $input['address'],  
             'user_role_id' =>$input['user_role_id']
             
         ]);
@@ -146,8 +162,16 @@ class OrganizationController extends Controller
      */
     public function destroy($id)
     {
+        if (!Gate::allows('organization-delete')) {
+            return abort(401);
+        }
         //
         Organization::find($id)->delete();
         return redirect()->route('organization.index');
+    }
+    public function orgview($id)
+    {
+        $organization = Organization::find($id);
+        return view('frontend/orgprofile',compact('organization'));
     }
 }
