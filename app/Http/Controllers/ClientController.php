@@ -40,23 +40,23 @@ class ClientController extends Controller
     {
         //
        
-        $user  = User::create([
-            'name'=> request('name'),
-            'email'=>request('email'),
-            'contact'=>request('contact'),
-            'email_verified_at'=>request('date'),
-            'address'=>request('address'),
-            'password'=>request('password'),
-            'user_role_id' =>request('user_role_id')
-        ]);
+        // $user  = User::create([
+        //     'name'=> request('name'),
+        //     'email'=>request('email'),
+        //     'contact'=>request('contact'),
+        //     'email_verified_at'=>request('date'),
+        //     'address'=>request('address'),
+        //     'password'=>request('password'),
+        //     'user_role_id' =>request('user_role_id')
+        // ]);
         
-        $organization = organization::create([
-            'user_id' => $user->id,
-            'alt_email' => request('alt_email'),
-            'status' => request('status')
-        ]);
-        // dd($request->all());
-        return redirect()->route('client.create');
+        // $organization = organization::create([
+        //     'user_id' => $user->id,
+        //     'alt_email' => request('alt_email'),
+        //     'status' => request('status')
+        // ]);
+        // // dd($request->all());
+        // return redirect()->route('client.create');
     }
 
     /**
@@ -90,7 +90,28 @@ class ClientController extends Controller
      */
     public function update(Request $request, client $client)
     {
-        //
+
+        $input = $request->all();
+        $user = $client->user;
+        if($image = $request->file('image')){
+            $destination = 'images/';
+            $clientimg = date('mdYHis').'.'.$image->getClientOriginalExtension();
+            $image->move($destination, $clientimg);
+            $input['image'] = $clientimg;
+        }
+        $user->update([
+            'name' => $input['name'],
+            'email' =>$input['email'],
+            'password' =>$input['password'],
+            'contact' =>$input['contact'],
+            'address' =>$input['address'],
+            'user_role_id' => 3,
+        ]);
+
+        $client->update([
+            'user_id'=> $user->id,
+            'image'=>$input['image']
+        ]); 
     }
 
     /**

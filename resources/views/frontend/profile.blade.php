@@ -122,10 +122,10 @@
                     </ul>
                 </div>
             </div>
-            {{-- <div class="col-md-2">
+            <div class="col-md-2">
                 
-                <button class="btn btn-primary" > <a href="" style="text-decoration: none; color:white;"> Edit Profile</a></button>
-            </div> --}}
+                <button class="btn btn-primary" > <a href="{{route('edit.profile', [$profile->id])}}" style="text-decoration: none; color:white;"> Edit Profile</a></button>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-4">

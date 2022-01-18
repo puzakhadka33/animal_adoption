@@ -57,12 +57,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('admin', App\Http\Controllers\AdminController::class);
     Route::resource('blog', App\Http\Controllers\BlogController::class);
     Route::resource('message', App\Http\Controllers\MessageController::class);
-   
+    // Route::resource('client', App\Http\Controllers\ClientController::class);
+    
+    
     route::get('inbox',[App\Http\Controllers\inboxController::class, 'viewMessage'])->name('inbox.viewMessage');
     Route::get('adopt/{animal}', [App\Http\Controllers\AdoptionController::class, 'adopt'])->name('adopt');
     route::get('adInbox',[App\Http\Controllers\contact::class, 'index'])->name('adInbox.index');
     route::get('adInbox/{id}',[App\Http\Controllers\contact::class, 'destroy'])->name('adInbox.destroy');
     route::get('profile',[App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+    route::get('editprofile/{id}',[App\Http\Controllers\HomeController::class, 'editProfile'])->name('edit.profile');
+    route::post('updateprofile',[App\Http\Controllers\HomeController::class, 'updateProfile'])->name('update.profile');
+    // route::post('client',[App\Http\Controllers\ClientController::class, 'update'])->name('update.profile');
+
 
 
 });

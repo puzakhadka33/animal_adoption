@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 
@@ -124,7 +125,7 @@ class OrganizationController extends Controller
             return abort(401);
         }
         $input = $request->all();
-        $user= $request->all();
+        // $user= $request->all();
         $user = $organization->user;
         if($image = $request->file('image')){
             $destination = 'images/';
@@ -138,19 +139,23 @@ class OrganizationController extends Controller
             'contact'=>$input['contact'],
             'email_verified_at'=>$input['email_verified_at'],
             'address'=> $input['address'],  
-            'user_role_id' =>$input['user_role_id']
+            // 'user_role_id' =>$input['user_role_id']
             
         ]);
         
         
         $organization->update([
-            'user_id' => $user->id,
+            // 'user_id' => $user->id,
             'alt_email' => $input['alt_email'],
             // 'status' => $input['status'],
             'image' => $input['image']
         ]);
         // dd($request->all());
-    
+        
+        $org = auth::user()->organization;
+        if ($org) {
+            return redirect()->route('profile');
+        }
         return redirect()->route('organization.index'); 
     }
 

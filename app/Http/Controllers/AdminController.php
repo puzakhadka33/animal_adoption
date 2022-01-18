@@ -102,7 +102,7 @@ class AdminController extends Controller
         if (!Gate::allows('admin-edit')) {
             return abort(401);
         }
-        return view('admin.update',compact('admin'));
+        return view('admin.admin.update',compact('admin'));
     }
 
     /**
@@ -117,7 +117,37 @@ class AdminController extends Controller
         if (!Gate::allows('admin-edit')) {
             return abort(401);
         }
-        $admin->update($request->all());
+
+        $input = $request->all();
+        $user= $request->all();
+        $user = $admin->user;
+        if($image = $request->file('image')){
+            $destination = 'images/';
+            $organization_img = date('mdYHis').'.'.$image->getClientOriginalExtension();
+            $image->move($destination, $organization_img);
+            $input['image'] = $organization_img;
+        }
+        $user->update([
+            'name'=> $input['name'],
+            'email'=>$input['email'],
+            'contact'=>$input['contact'],
+            // 'email_verified_at'=>$input['email_verified_at'],
+            'address'=> $input['address'],  
+            // 'user_role_id' =>$input['user_role_id']
+            
+        ]);
+        
+        $admin->update([
+            // 'user_id' => $user->id,
+            'alt_email' => $input['alt_email'],
+            // 'status' => $input['status'],
+            'image' => $input['image']
+        ]);
+        // dd($request->all());
+
+
+    
+        // $admin->update($request->all());
         return redirect()->route('admin.index'); 
     }
 

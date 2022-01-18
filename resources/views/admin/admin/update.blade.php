@@ -10,32 +10,37 @@
         <div class="form-group">
           <br>
           <label for="name">name</label>
-          <input name="name" type="text" class="form-control" id="animal"placeholder="Add name "value="{{$admin->name}}">
+          <input name="name" type="text" class="form-control" id="animal"placeholder="Add name "value="{{$admin->user->name}}">
         </div>
         <div class="form-group">
           <br>
           <label for="name">email</label>
-          <input name="email" type="email" class="form-control" id="animal "placeholder="Enter your email " value="{{$admin->email}}">
+          <input name="email" type="email" class="form-control" id="animal "placeholder="Enter your email " value="{{$admin->user->email}}">
         </div>
         <div class="form-group">
           <br>
           <label for="name">contact</label>
-          <input name="contact" type="text" class="form-control" id="animal "placeholder="Enter your contact "value="{{$admin->contact}}">
+          <input name="contact" type="text" class="form-control" id="animal "placeholder="Enter your contact "value="{{$admin->user->contact}}">
         </div>
         <div class="form-group">
           <br>
           <label for="name">address</label>
-          <input name="address" type="text" class="form-control" id="animal"placeholder="Enter your address "value="{{$admin->address}}">
+          <input name="address" type="text" class="form-control" id="animal"placeholder="Enter your address "value="{{$admin->user->address}}">
         </div>
         <div class="form-group">
           <br>
           <label for="name">password</label>
-          <input name="password" type="password" class="form-control" id="animal"placeholder="Enter your password "value="{{$admin->password}}">
+          <input name="password" type="password" class="form-control" id="animal"placeholder="Enter your password "value="{{$admin->user->password}}">
         </div>
         <div class="form-group">
           <br>
           <label for="name">alt_email</label>
           <input name="alt_email" type="email" class="form-control" id="animal"placeholder="Add email"value="{{$admin->alt_email}}">
+        </div>
+        <div class="form-group">
+          <br>
+          <label for="name">Image</label>
+          <input name="image" type="file" class="form-control" id="animal"placeholder="Add email"value="">
         </div>
         <div>
           <input  type="text" name ="status" value="" id="flexCheckDefault"value="{{$admin->status}}">

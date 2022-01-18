@@ -70,6 +70,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         
+        // dd(array_key_exists('image',$data));
+        if(array_key_exists('image',$data)){
+                $image = $data['image'];
+                $destination = 'images/';
+            $clientimg = date('mdYHis').'.'.$image->getClientOriginalExtension();
+            $image->move($destination, $clientimg);
+            $data['image'] = $clientimg;
+        }
         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -82,6 +90,7 @@ class RegisterController extends Controller
         // dd($data);
         $client =  Client::create([
             'user_id' => $user->id,
+            'image' => $data['image'],
             
         ]);
             

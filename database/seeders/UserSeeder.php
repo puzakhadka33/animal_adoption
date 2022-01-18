@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         User::truncate();
         Admin::truncate();
+        Organization::truncate();
         $rows = [
             [
                 'name'=>'Super Admin', 
@@ -38,6 +39,15 @@ class UserSeeder extends Seeder
                 'address' => 'fdsf', 
                 'password' => Hash::make('org'), 
                 'user_role_id' => 2,
+                
+            ],
+            [
+                'name'=>'Client', 
+                'email' => 'client@test.com', 
+                'contact' => '34', 
+                'address' => 'fdsf', 
+                'password' => Hash::make('client'), 
+                'user_role_id' => 3,
                 
             ],
         ];
